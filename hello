@@ -1,20 +1,39 @@
-hello 
-my name is pouya
+package com.example.reliabilitychecker;
 
+import java.util.List;
 
+public class SystemHealthChecker {
+    private final List<Service> services;
 
-public class Main {
-  static void myMethod() {
-    System.out.println("I just got executed!");
-  }
+    public SystemHealthChecker(List<Service> services) {
+        this.services = services;
+    }
 
-  public static void main(String[] args) {
-    myMethod();
-    myMethod();
-    myMethod();
-  }
+    public void checkAll() {
+        for (Service service : services) {
+            try { // <<< CHANGED >>>
+
+                if (service.checkHealth()) { // <<< CHANGED >>>
+                    System.out.println(service.getName() + " is healthy"); // <<< CHANGED >>>
+                } else { // <<< CHANGED >>>
+                    System.out.println(service.getName() + " is unhealthy"); // <<< CHANGED >>>
+                }
+
+            } catch (CriticalException e) { // <<< CHANGED >>>
+
+                System.out.println(e.getMessage()); // <<< CHANGED >>>
+                System.out.println("Critical service failed. Shutting down system..."); // <<< CHANGED >>>
+                return; // <<< CHANGED >>> توقف اجرای برنامه
+
+            } catch (NonCriticalException e) { // <<< CHANGED >>>
+
+                System.out.println(e.getMessage()); // <<< CHANGED >>>
+                System.out.println(service.getName() + " is unhealthy"); // <<< CHANGED >>>
+
+                // ادامه اجرای سرویس‌های بعدی // <<< CHANGED >>>
+            }
+        }
+
+        System.out.println("System health check completed."); // <<< CHANGED >>>
+    }
 }
-
-
-
-siuuuuuuuuuuuuuuuu
