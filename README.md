@@ -58,9 +58,10 @@ print("مجموع:", sum_)
 محیط‌های مجازی (virtual environments)
 - استفاده از محیط مجازی باعث جدا ماندن بسته‌ها بین پروژه‌ها می‌شود.
 - ایجاد و فعال‌سازی با venv:
-  - ایجاد: `python -m venv venv`
+  - ایجاد: `python -m venv venv` (اگر لازم است از `python3 -m venv venv` استفاده کنید)
   - فعال‌سازی در macOS/Linux: `source venv/bin/activate`
   - فعال‌سازی در Windows (PowerShell): `venv\Scripts\Activate.ps1`
+  - فعال‌سازی در Windows (Command Prompt): `venv\Scripts\activate`
   - پس از فعال‌سازی، از `pip install` برای نصب بسته‌ها استفاده کنید.
 
 نحوهٔ راه‌اندازی پروژه
@@ -82,22 +83,33 @@ cd test
 ```bash
 # ایجاد محیط مجازی
 python -m venv venv
+# یا اگر روی سیستم‌تان python به نسخهٔ 2 اشاره می‌کند:
+# python3 -m venv venv
 
 # فعال‌سازی در macOS / Linux:
 source venv/bin/activate
 
 # فعال‌سازی در Windows (PowerShell):
 venv\Scripts\Activate.ps1
+
+# فعال‌سازی در Windows (Command Prompt):
+venv\Scripts\activate
 ```
 
 به‌روزرسانی pip
 
 ```bash
 python -m pip install --upgrade pip
+# یا در صورت نیاز: python3 -m pip install --upgrade pip
 ```
 
 نصب وابستگی‌ها
 - در این مخزن فایلی مانند requirements.txt وجود ندارد و وابستگی خارجی مشخص نشده است. اگر پروژه‌ای نیاز به بسته‌های خارجی داشت، می‌توانید آن‌ها را با `pip install package-name` نصب کنید یا یک فایل requirements.txt ایجاد و سپس با `pip install -r requirements.txt` نصب کنید.
+- اگر بعداً requirements.txt اضافه شد، دستور زیر وابستگی‌ها را نصب می‌کند:
+
+```bash
+pip install -r requirements.txt
+```
 
 چگونه کدها را اجرا یا امتحان کنیم
 - اگر فایل utils_math.py در ریشهٔ مخزن موجود است، می‌توانید آن را به صورت مستقیم در مفسر پایتون وارد و امتحان کنید:
@@ -105,6 +117,8 @@ python -m pip install --upgrade pip
 ```bash
 # نمایش محتوای ماژول و عملکردهای آن
 python -c "import utils_math; print(dir(utils_math))"
+# اگر سیستم شما از python3 استفاده می‌کند:
+# python3 -c "import utils_math; print(dir(utils_math))"
 
 # یا باز کردن مفسر پایتون و وارد کردن ماژول:
 python
@@ -116,7 +130,11 @@ python
 
 ```bash
 python utils_math.py
+# یا
+python3 utils_math.py
 ```
+
+- اگر فایل utils_math.py در مسیر دیگری قرار دارد یا نام متفاوت است، نام صحیح فایل را بررسی کنید یا از دستورls / dir برای دیدن فایل‌های موجود استفاده کنید.
 
 دلیل این بخش
 - اضافه کردن این راهنمای گام‌به‌گام باعث می‌شود خوانندگان مبتدی بدانند چگونه محیط را آماده کنند و چگونه فایل‌های این پروژه را اجرا یا تست کنند.
