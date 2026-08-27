@@ -63,6 +63,64 @@ print("مجموع:", sum_)
   - فعال‌سازی در Windows (PowerShell): `venv\Scripts\Activate.ps1`
   - پس از فعال‌سازی، از `pip install` برای نصب بسته‌ها استفاده کنید.
 
+نحوهٔ راه‌اندازی پروژه
+
+این بخش مراحل گام‌به‌گام برای آماده‌سازی و اجرای این مخزن را توضیح می‌دهد تا کسی که پروژه را کلون می‌کند بتواند سریع آن را اجرا کند.
+
+پیش‌نیاز
+- Python 3 نصب شده روی سیستم (برای بررسی: `python --version` یا `python3 --version`).
+
+کلون کردن مخزن
+
+```bash
+git clone https://github.com/pouyashams/test.git
+cd test
+```
+
+ایجاد و فعال‌سازی محیط مجازی
+
+```bash
+# ایجاد محیط مجازی
+python -m venv venv
+
+# فعال‌سازی در macOS / Linux:
+source venv/bin/activate
+
+# فعال‌سازی در Windows (PowerShell):
+venv\Scripts\Activate.ps1
+```
+
+به‌روزرسانی pip
+
+```bash
+python -m pip install --upgrade pip
+```
+
+نصب وابستگی‌ها
+- در این مخزن فایلی مانند requirements.txt وجود ندارد و وابستگی خارجی مشخص نشده است. اگر پروژه‌ای نیاز به بسته‌های خارجی داشت، می‌توانید آن‌ها را با `pip install package-name` نصب کنید یا یک فایل requirements.txt ایجاد و سپس با `pip install -r requirements.txt` نصب کنید.
+
+چگونه کدها را اجرا یا امتحان کنیم
+- اگر فایل utils_math.py در ریشهٔ مخزن موجود است، می‌توانید آن را به صورت مستقیم در مفسر پایتون وارد و امتحان کنید:
+
+```bash
+# نمایش محتوای ماژول و عملکردهای آن
+python -c "import utils_math; print(dir(utils_math))"
+
+# یا باز کردن مفسر پایتون و وارد کردن ماژول:
+python
+>>> import utils_math
+>>> dir(utils_math)
+```
+
+- اگر utils_math.py اسکریپتی قابل اجرا دارد، ممکن است بتوانید آن را مستقیم اجرا کنید:
+
+```bash
+python utils_math.py
+```
+
+دلیل این بخش
+- اضافه کردن این راهنمای گام‌به‌گام باعث می‌شود خوانندگان مبتدی بدانند چگونه محیط را آماده کنند و چگونه فایل‌های این پروژه را اجرا یا تست کنند.
+
 منابع برای یادگیری بیشتر
 - مستندات رسمی: https://docs.python.org/3/
 - آموزش‌ها و دوره‌های مبتدی (مثل "Automate the Boring Stuff with Python")
